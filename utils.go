@@ -7,6 +7,7 @@ import (
 
 	"github.com/couchbase/cbauth"
 	"github.com/couchbase/gocb"
+	sll "github.com/emirpasic/gods/lists/singlylinkedlist"
 )
 
 // CBAuthURL rewrites a URL with credentials, for use in a cbauth'ed
@@ -74,6 +75,10 @@ func OpenBucket(bucketName, connSpec string) (bucket *gocb.Bucket, err error) {
 }
 
 func AddTrailingSlash(initial string) string {
+
+	list := sll.New()
+	list.Add("a")                         // ["a"]
+
 	if strings.HasSuffix(initial, "/") {
 		return initial
 	}
